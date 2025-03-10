@@ -2,23 +2,23 @@ vCard - Personal Portfolio
 
 # sidebar
 
-alt = Richard hanrick
-Richard hanrick
+alt = Sourav Dey
+Sourav Dey
 Web developer
 
 Show Contacts
 
 Email
-richard@example.com
+sourav.dey0147@gmail.com
 
 Phone
-+1 (213) 352-2795
++91 7715967797
 
 Birthday
-June 23, 1982
+July 19, 2001
 
 Location
-Sacramento, California, USA
+Mumbai, Maharashtra, India
 
 # navbar
 
