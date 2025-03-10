@@ -766,6 +766,32 @@ main {
 
 .article-title { margin-bottom: 30px; }
 
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resume-download-btn {
+  background: var(--eerie-black-2);
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  padding: 10px 16px;
+  width: 180px; /* Fixed width */
+  border: 1px solid var(--jet);
+  border-radius: 0 0 14px 14px; /* Only bottom corners are rounded */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease-in-out;
+}
+
+.resume-download-btn:hover {
+  background: var(--text-gradient-yellow);
+  color: var(--eerie-black-2);
+  font-weight: var(--fw-400);
+}
 
 /**
  * education and experience 
