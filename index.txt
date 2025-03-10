@@ -4,7 +4,7 @@ vCard - Personal Portfolio
 
 alt = Sourav Dey
 Sourav Dey
-Web developer
+Fullstack Developer
 
 Show Contacts
 
@@ -32,10 +32,9 @@ Contact
 
 About me
 
-I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media. I enjoy turning complex problems into simple, beautiful and intuitive designs.
+I'm an Android Lead and Full-Stack Developer with a strong foundation in mobile development and backend systems. I specialize in building high-performance, crash-free Android applications using Jetpack Compose, multi-module architecture, and modern development practices.  
 
-My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring across your message and identity in the most creative way. I created web design for many famous brand companies.
-
+As a leader, I focus on optimizing development workflows, solving critical bugs, and ensuring seamless feature delivery. My contributions extend to CI/CD automation, API development, and enhancing team efficiency. Passionate about problem-solving and innovation, I thrive on creating intuitive user experiences while mentoring teams to deliver high-quality software.
 
 ## service
 
