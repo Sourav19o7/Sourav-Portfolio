@@ -771,6 +771,7 @@ main {
   justify-content: space-between;
   align-items: center;
 }
+
 .resume-download-btn {
   background: var(--eerie-black-2);
   color: var(--light-gray);
@@ -783,22 +784,27 @@ main {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  transition: 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out, 
+              color 0.3s ease-in-out, 
+              font-weight 0.3s ease-in-out, 
+              border-radius 0.3s ease-in-out, 
+              transform 0.2s ease-in-out;
 }
 
 /* For Phones (Width < 768px) */
 @media (max-width: 768px) {
   .resume-download-btn {
-    border-radius: 14px; /* Curved on all sides */
+    border-radius: 14px; /* Fully rounded on all sides */
   }
 }
 
-
 .resume-download-btn:hover {
-  background: var(--text-gradient-yellow);
+  background: var(--orange-yellow-crayola);
   color: var(--eerie-black-2);
-  font-weight: var(--fw-400);
+  font-weight: var(--fw-500);
+  transform: scale(1.05); /* Slight pop effect on hover */
 }
+
 
 /**
  * education and experience 
