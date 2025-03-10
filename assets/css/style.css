@@ -771,7 +771,6 @@ main {
   justify-content: space-between;
   align-items: center;
 }
-
 .resume-download-btn {
   background: var(--eerie-black-2);
   color: var(--light-gray);
@@ -780,12 +779,20 @@ main {
   padding: 10px 16px;
   width: 180px; /* Fixed width */
   border: 1px solid var(--jet);
-  border-radius: 0 0 14px 14px; /* Only bottom corners are rounded */
+  border-radius: 0 0 14px 14px; /* Default for laptops */
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
+
+/* For Phones (Width < 768px) */
+@media (max-width: 768px) {
+  .resume-download-btn {
+    border-radius: 14px; /* Curved on all sides */
+  }
+}
+
 
 .resume-download-btn:hover {
   background: var(--text-gradient-yellow);
