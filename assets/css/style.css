@@ -21,60 +21,74 @@
    * colors
    */
 
+  /* -------------------------------------------------- *\
+     TERMINAL / IDE THEME
+     GitHub-dark surfaces + cyan primary & green terminal accent.
+     Legacy "yellow"/"gold" token names are kept but remapped to
+     cyan so the whole component layer re-themes with no rule edits.
+  \* -------------------------------------------------- */
+
+  /* accents */
+  --accent-cyan: hsl(190, 95%, 55%);       /* primary — links, highlights   */
+  --accent-cyan-dim: hsl(190, 60%, 45%);
+  --accent-green: hsl(140, 70%, 55%);      /* terminal prompt / success      */
+  --accent-magenta: hsl(320, 70%, 62%);    /* rare syntax pop                */
+
   /* gradient */
 
   --bg-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(240, 1%, 25%) 3%, 
-    hsl(0, 0%, 19%) 97%
+    to bottom right,
+    hsl(215, 20%, 18%) 3%,
+    hsl(215, 24%, 12%) 97%
   );
   --bg-gradient-jet: linear-gradient(
-    to bottom right, 
-    hsla(240, 1%, 18%, 0.251) 0%, 
-    hsla(240, 2%, 11%, 0) 100%
-  ), hsl(240, 2%, 13%);
+    to bottom right,
+    hsla(215, 20%, 20%, 0.35) 0%,
+    hsla(215, 28%, 9%, 0) 100%
+  ), hsl(215, 26%, 11%);
   --bg-gradient-yellow-1: linear-gradient(
-    to bottom right, 
-    hsl(45, 100%, 71%) 0%, 
-    hsla(36, 100%, 69%, 0) 50%
+    to bottom right,
+    hsl(190, 95%, 58%) 0%,
+    hsla(190, 95%, 58%, 0) 50%
   );
   --bg-gradient-yellow-2: linear-gradient(
-    135deg, 
-    hsla(45, 100%, 71%, 0.251) 0%, 
-    hsla(35, 100%, 68%, 0) 59.86%
-  ), hsl(240, 2%, 13%);
+    135deg,
+    hsla(190, 95%, 58%, 0.28) 0%,
+    hsla(190, 95%, 58%, 0) 59.86%
+  ), hsl(215, 26%, 11%);
   --border-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(0, 0%, 25%) 0%, 
-    hsla(0, 0%, 25%, 0) 50%
+    to bottom right,
+    hsl(215, 15%, 30%) 0%,
+    hsla(215, 15%, 30%, 0) 50%
   );
   --text-gradient-yellow: linear-gradient(
-    to right, 
-    hsl(45, 100%, 72%), 
-    hsl(35, 100%, 68%)
+    to right,
+    hsl(190, 95%, 62%),
+    hsl(165, 80%, 55%)
   );
 
   /* solid */
 
-  --jet: hsl(0, 0%, 22%);
-  --onyx: hsl(240, 1%, 17%);
-  --eerie-black-1: hsl(240, 2%, 13%);
-  --eerie-black-2: hsl(240, 2%, 12%);
-  --smoky-black: hsl(0, 0%, 7%);
-  --white-1: hsl(0, 0%, 100%);
-  --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
-  --light-gray: hsl(0, 0%, 84%);
-  --light-gray-70: hsla(0, 0%, 84%, 0.7);
-  --bittersweet-shimmer: hsl(0, 43%, 51%);
+  --jet: hsl(215, 14%, 24%);
+  --onyx: hsl(215, 20%, 16%);
+  --eerie-black-1: hsl(215, 24%, 12%);
+  --eerie-black-2: hsl(215, 26%, 11%);
+  --smoky-black: hsl(220, 27%, 7%);
+  --white-1: hsl(210, 30%, 96%);
+  --white-2: hsl(210, 20%, 90%);
+  --orange-yellow-crayola: hsl(190, 95%, 58%);   /* remapped -> cyan */
+  --vegas-gold: hsl(165, 55%, 52%);              /* remapped -> teal */
+  --light-gray: hsl(214, 15%, 72%);
+  --light-gray-70: hsla(214, 15%, 72%, 0.7);
+  --bittersweet-shimmer: hsl(0, 65%, 62%);
 
   /**
    * typography
    */
 
   /* font-family */
-  --ff-lexend: 'Lexend', sans-serif;
+  --ff-lexend: 'JetBrains Mono', 'Lexend', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ff-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* font-size */
   --fs-1: 24px;
@@ -542,7 +556,8 @@ main {
 
 .service-icon-box { margin-bottom: 10px; }
 
-.service-icon-box img { margin: auto; }
+/* recolor the yellow template SVGs toward the cyan theme */
+.service-icon-box img { margin: auto; filter: hue-rotate(150deg) saturate(1.4); }
 
 .service-content-box { text-align: center; }
 
@@ -1918,4 +1933,202 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .timeline-text { max-width: 700px; }
 
+}
+
+/*-----------------------------------*\
+  #TERMINAL / IDE ENHANCEMENTS  (appended)
+\*-----------------------------------*/
+
+/* subtle IDE grid texture behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(hsla(190, 95%, 58%, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, hsla(190, 95%, 58%, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  pointer-events: none;
+}
+
+::selection { background: var(--accent-cyan); color: var(--smoky-black); }
+:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; }
+
+/* monospace UI chrome */
+.navbar-link,
+.filter-item button,
+.service-item-title,
+.project-category,
+.skills-item .h5,
+.form-btn,
+.resume-download-btn { font-family: var(--ff-mono); letter-spacing: -0.02em; }
+
+/* ---- sidebar: role line as a live shell prompt ---- */
+.info-content .title {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-8) !important;
+  color: var(--accent-cyan) !important;
+  background: hsla(190, 95%, 58%, 0.08);
+  border: 1px solid hsla(190, 95%, 58%, 0.25);
+}
+.info-content .title::before { content: "> "; color: var(--accent-green); }
+.info-content .title::after {
+  content: "";
+  display: inline-block;
+  width: 7px; height: 1em;
+  margin-left: 3px;
+  background: var(--accent-cyan);
+  vertical-align: -2px;
+  animation: term-blink 1.1s steps(1) infinite;
+}
+@keyframes term-blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+/* ---- section headings as // code comments ---- */
+.article-title { font-family: var(--ff-mono); }
+.service-title::before,
+.skills-title::before {
+  content: "// ";
+  font-family: var(--ff-mono);
+  color: var(--accent-cyan-dim);
+}
+
+/* ---- navbar: terminal tab feel ---- */
+.navbar-link { font-size: var(--fs-8); }
+.navbar-link::before { content: ""; opacity: 0; transition: var(--transition-1); }
+.navbar-link.active::before,
+.navbar-link:hover::before { content: "~/"; opacity: 0.6; color: var(--accent-green); }
+
+/* ---- project cards: editor window chrome + accent hover ---- */
+.project-img { position: relative; border: 1px solid hsla(215, 15%, 40%, 0.35); }
+.project-img::after {
+  content: "● ● ●";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 2;
+  padding: 5px 10px;
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: hsla(0, 0%, 100%, 0.55);
+  background: hsla(220, 27%, 7%, 0.85);
+  backdrop-filter: blur(2px);
+  border-bottom: 1px solid hsla(215, 15%, 40%, 0.4);
+}
+.project-item > a { transition: transform var(--transition-1); }
+.project-item > a:hover { transform: translateY(-4px); }
+.project-item > a:hover .project-img {
+  border-color: hsla(190, 95%, 58%, 0.6);
+  box-shadow: 0 8px 30px hsla(190, 95%, 58%, 0.15);
+}
+.project-title { font-family: var(--ff-mono); }
+.project-category { color: var(--light-gray-70) !important; }
+
+/* ---- reusable "engineer" building blocks ---- */
+.term-label {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-8);
+  color: var(--accent-cyan-dim);
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+.term-label::before { content: "$ "; color: var(--accent-green); }
+
+/* stack badge grid */
+.stack-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.stack-badge {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-8);
+  color: var(--light-gray);
+  padding: 6px 11px;
+  border-radius: 8px;
+  background: var(--border-gradient-onyx);
+  border: 1px solid hsla(215, 15%, 40%, 0.4);
+  transition: var(--transition-1);
+  cursor: default;
+}
+.stack-badge:hover {
+  color: var(--accent-cyan);
+  border-color: hsla(190, 95%, 58%, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px hsla(190, 95%, 58%, 0.15);
+}
+.stack-badge b { color: var(--accent-cyan); font-weight: var(--fw-600); }
+
+/* stat cards */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.stat-card {
+  position: relative;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--border-gradient-onyx);
+  border: 1px solid hsla(215, 15%, 40%, 0.4);
+  overflow: hidden;
+}
+.stat-card::before {
+  content: "";
+  position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(var(--accent-cyan), var(--accent-green));
+}
+.stat-num {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-1);
+  font-weight: var(--fw-700);
+  background: var(--text-gradient-yellow);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+}
+.stat-label {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-8);
+  color: var(--light-gray-70);
+  margin-top: 4px;
+}
+
+/* github contribution graph card */
+.gh-graph {
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--border-gradient-onyx);
+  border: 1px solid hsla(215, 15%, 40%, 0.4);
+  overflow-x: auto;
+}
+.gh-graph img { width: 100%; min-width: 480px; border-radius: 6px; }
+
+@media (min-width: 580px) {
+  .stats-row { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* staggered page-load reveal */
+@keyframes term-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.about .about-text,
+.about .service,
+.about .stack-section,
+.about .stats-section,
+.about .gh-section {
+  animation: term-rise 0.5s ease both;
+}
+.about .service { animation-delay: 0.08s; }
+.about .stack-section { animation-delay: 0.16s; }
+.about .stats-section { animation-delay: 0.24s; }
+.about .gh-section { animation-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; }
 }

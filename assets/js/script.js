@@ -124,3 +124,28 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+// ---- terminal typing effect for the role/title line ----
+(function () {
+  const el = document.querySelector("[data-typed]");
+  if (!el) return;
+
+  const full = el.textContent.trim();
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) return; // leave the text as-is
+
+  el.textContent = "";
+  let i = 0;
+  const speed = 45;
+
+  function type() {
+    if (i <= full.length) {
+      el.textContent = full.slice(0, i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  // small delay so the page settles first
+  setTimeout(type, 350);
+})();
