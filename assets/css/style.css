@@ -1061,6 +1061,9 @@ main {
   transition: var(--transition-1);
 }
 
+/* tall/portrait screenshots: anchor to the top so the app header shows */
+.project-img img.shot-tall { object-position: top center; }
+
 .project-item > a:hover img { transform: scale(1.1); }
 
 .project-title,
